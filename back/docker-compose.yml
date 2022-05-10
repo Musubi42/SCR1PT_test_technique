@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  app-product-db:
+    image: mysql:latest
+    container_name: app-product-db
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: database_product
+      MYSQL_ROOT_PASSWORD: password
+    ports: 
+      - "3306:3306"
+    expose:
+      - "3306"
+    # security_opt:
+    #   - seccomp:unconfined
+volumes:
+  db_data: 
